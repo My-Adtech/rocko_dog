@@ -10,6 +10,8 @@
 #include "Wire.h"
 #include "Adafruit_PWMServoDriver.h"
 #include "math.h"
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
 
 //This values are for SG90, change values according to your servos
 #define SERVOMIN  200 // This is the 'minimum' pulse length count (out of 4096)= 0°
@@ -22,12 +24,46 @@ class Rocko
 {
   public:
     Rocko();
+    void begin();
     void Up();
     void Down();
+    
+    // Gait Control
+    void MoveLeg(int leg, float x, float z);
+    void setLegPosition(int leg, float x, float z);
+    void Trot();
+    void Walk();
+    
+    // IMU
+    void initIMU();
+    void stabilize();
+    
+    // Calibration
+    void setTrim(int leg, int joint, int value);
+    
   private:
     Adafruit_PWMServoDriver _pwm;
-    int _pwmValue;
-    void WriteServo(int servonum, int, angleValue);
+    Adafruit_MPU6050 _imu;
+
+    // Servo limits
+    int _SERVOMIN;
+    int _SERVOMAX;
+    int _trim[8] = {0}; // Trim values for 8 servos
+
+    // Robot dimensions
+    float femur = 10.0; // cm
+    float calf = 10.0;  // cm
+
+    // Servo Mapping (2 servos per leg: Hip, Knee)
+    // Leg 0: FL, Leg 1: FR, Leg 2: BL, Leg 3: BR
+    const int HIP_PINS[4] = {0, 2, 4, 6};
+    const int KNEE_PINS[4] = {1, 3, 5, 7};
+
+    // Helper methods
+    void WriteServo(int servonum, int angleValue);
+    float GetAlphaAng(float x, float z);
+    float GetBetaAng(float x, float z);
+    float GetGammaAng(float x, float z);
 };
 
 #endif
