@@ -3,11 +3,11 @@
 
 clear; clc; close all;
 
-%% Robot Dimensions (cm)
-femur = 10;
-calf = 10;
-body_length = 20;
-body_width = 12;
+%% Robot Dimensions (cm) - Updated for MG996R Servos
+femur = 12;
+calf = 12;
+body_length = 24;
+body_width = 14;
 
 %% Gait Parameters (Trot)
 % Trot: Diagonals move together.

@@ -50,9 +50,9 @@ class Rocko
     int _SERVOMAX;
     int _trim[8] = {0}; // Trim values for 8 servos
 
-    // Robot dimensions
-    float femur = 10.0; // cm
-    float calf = 10.0;  // cm
+    // Robot Dimensions (cm)
+    float femur = 12.0;
+    float calf = 12.0;  // cm
 
     // Servo Mapping (2 servos per leg: Hip, Knee)
     // Leg 0: FL, Leg 1: FR, Leg 2: BL, Leg 3: BR
