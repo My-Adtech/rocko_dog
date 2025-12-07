@@ -14,7 +14,10 @@
 *   **3D Printable**: Parametric models generated via **FreeCAD** or **OpenSCAD**.
 
 ## 🛠️ Hardware Requirements
-*   **Microcontroller**: ESP32 (Recommended) or Arduino Uno.
+*   **Microcontroller**:
+    *   **ESP32**: Low-cost, direct WiFi/MQTT.
+    *   **Arduino UNO Q**: High-performance, Hybrid (Linux + MCU).
+        *   *Architecture*: Linux side handles Cloud/AI, sends commands to MCU via Serial.
 *   **Servo Driver**: PCA9685 16-Channel PWM Driver.
 *   **Servos**:
     *   **Standard**: 8x **MG996R** (Recommended for strength).

@@ -8,6 +8,10 @@ RockoRemote remote;
 const char* ssid = "YOUR_SSID";
 const char* password = "YOUR_PASSWORD";
 
+// MQTT Broker
+const char* mqtt_server = "test.mosquitto.org";
+int mqtt_port = 1883;
+
 void setup() {
   Serial.begin(9600);
   Serial.println("Hello from Doggy");
@@ -15,7 +19,7 @@ void setup() {
   rocko.begin();
   rocko.initIMU();
   
-  remote.begin(ssid, password);
+  remote.begin(ssid, password, mqtt_server, mqtt_port);
 }
 
 void loop() {
